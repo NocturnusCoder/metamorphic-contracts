@@ -6,15 +6,6 @@ These contracts are for test purposes and should not be used in production envir
 - [0xOwenThurm Twitter Thread](https://x.com/0xOwenThurm/status/1663296914853621760)
 
 ## Prerequisites
-- foundry.toml doesnt effect if contracts are deployed to anvil
-- evm_version: Shanghai should be selected. Otherwise selfdestroy only sends ether and contracts are not destroyed. Nneeds to be given in anvil `anvil --hard-fork shanghai
-- https://github.com/Cyfrin/foundry-devops is used to get the most recent deployment from a given environment in foundry. 0.8.13 is required for this tool.
-- A new contract(MetaDeployer) is deployed with Create. This contract has a Create2 function to create a factory contract(MutDeployer). 
-- MutDeployer contract has 3 functions. 1- A function which deploys a V1 version of an implementation contract. 2- A function which deploys a V2 version of an implementation co# Metamorphic Deployment Scripts
-
-These contracts are for test purposes and should **not** be used in production environments.  
-
-## Prerequisites
 
 - `foundry.toml` does not affect contracts deployed to Anvil.
 - **EVM Version:** Shanghai should be selected. Otherwise, `selfdestruct` only sends ether and contracts are not destroyed. This must be specified in Anvil:  
