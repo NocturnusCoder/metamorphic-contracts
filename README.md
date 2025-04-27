@@ -9,7 +9,7 @@ These contracts are for test purposes and should not be used in production envir
 
 - `foundry.toml` does not affect contracts deployed to Anvil.
 - **EVM Version:** Shanghai should be selected. Otherwise, `selfdestruct` only sends ether and contracts are not destroyed. This must be specified in Anvil:  
-  `anvil --hard-fork shanghai`
+  `anvil --hardfork shanghai`
 - A new contract (`MetaDeployer`) is deployed with `CREATE`. This contract has a `CREATE2` function to create a factory contract (`MutDeployer`).
 - The `MutDeployer` contract has 3 functions:
   1. Deploys a V1 version of an implementation contract.
@@ -41,9 +41,11 @@ The addresses deployed in the first part of the script are saved to a directory 
 
 Scripts need to be run separately:
 
+`anvil --hardfork shanghai`
+
 ```sh
-forge script MetaDeployerScript --broadcast --rpc-url localhost:8545 --private-key 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80 --sig "run1()"
-forge script MetaDeployerScript --broadcast --rpc-url localhost:8545 --private-key 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80 --sig "run2()"
+forge script MetaDeployerScript --broadcast --rpc-url localhost:8545 --private-key 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80 --sig "run1()" -vvvvv
+forge script MetaDeployerScript --broadcast --rpc-url localhost:8545 --private-key 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80 --sig "run2()" -vvvvv
 ```
 ## Running the tests
 Test file is not complete nad outputs collision error. I couldn't find a way to complete the selfdestruct transaction yet.
